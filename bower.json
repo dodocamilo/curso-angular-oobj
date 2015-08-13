@@ -1,0 +1,22 @@
+{
+  "name": "helloworld",
+  "version": "0.0.0",
+  "authors": [
+    "Jonathan <dodocamilo@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "angular-messages": "~1.4.3",
+    "angular-ui-growl": "~0.0.1"
+  }
+}
