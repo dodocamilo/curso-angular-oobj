@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+
+    <link rel="stylesheet" href="bower_components/angularjs/angular-csp.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="app/css/style.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-growl/css/growl.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angularjs/angular.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-ui-growl/src/growl.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
+
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+
+    <script src="app/js/app-config-bootstrap.js"></script>
+    <script src="app/js/bootstrap-controller.js"></script>
+</head>
+<body ng-app="helloWorldApp">
+
+<div class="container" ng-controller="BootstrapController">
+    <form novalidate name="myForm">
+        <div class="row">
+
+            <div class="form-group col-sm-3"
+                 ng-class="{'has-error' : (myForm.itNome.$invalid && !myForm.itNome.$pristine)}">
+                <label class="control-label" for="itNome">Nome</label>
+                <input type="text"
+                       class="form-control"
+                       id="itNome"
+                       name="itNome"
+                       ng-model="pessoa.nome"
+                       ng-minlength="5"
+                       ng-maxlength="200"
+                       ng-required="true">
+                <div class="help-block" ng-messages="myForm.itNome.$error" ng-if="!myForm.itNome.$pristine">
+                    <div ng-messages-include="messages.html"></div>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-3"
+                 ng-class="{'has-error' : (myForm.itSobrenome.$invalid && !myForm.itSobrenome.$pristine)}">
+                <label class="control-label" for="itSobrenome">Sobrenome</label>
+                <input type="text"
+                       class="form-control"
+                       id="itSobrenome"
+                       ng-model="pessoa.sobrenome">
+            </div>
+
+            <div class="form-group col-sm-3"
+                 ng-class="{'has-error' : (myForm.idDataNascimento.$invalid && !myForm.idDataNascimento.$pristine)}">
+                <label class="control-label" for="idDataNascimento">Data de Nascimento</label>
+                <input type="date"
+                       class="form-control"
+                       id="idDataNascimento"
+                       ng-model="pessoa.dataNascimento">
+            </div>
+
+            <div class="form-group col-sm-3"
+                 ng-class="{'has-error' : (myForm.sSexo.$invalid && !myForm.$pristine)}">
+                <label class="control-label" for="sSexo">Sexo</label>
+                <select class="form-control"
+                        id="sSexo"
+                        ng-model="pessoa.sexo">
+                    <option value="M">Macho</option>
+                    <option value="F">Fêmea</option>
+                </select>
+            </div>
+
+            <div class="form-group col-sm-3"
+                 ng-class="{'has-error' : (myForm.idCor.$invalid && !myForm.idCor.$pristine)}">
+                <label class="control-label" for="idCor">Cor</label>
+                <input type="text"
+                       class="form-control"
+                       id="idCor"
+                       ng-model="pessoa.cor">
+            </div>
+        </div>
+
+        <div class="row">
+            <div layout="column">
+                <md-content layout-padding layout="row" layout-sm="column">
+                    <md-input-container flex>
+                        <label>Nome</label>
+                        <input ng-model="pessoa.nome">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Sobrenome</label>
+                        <input ng-model="pessoa.sobrenome">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Data Nascimento</label>
+                        <input ng-model="pessoa.dataNascimento">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Sexo</label>
+                        <input ng-model="pessoa.sexo">
+                    </md-input-container>
+                </md-content>
+            </div>
+        </div>
+
+        <div ui-grid="gridOptions"
+                ui-grid-resize-columns
+                ui-grid-selection></div>
+
+        <nav class="navbar navbar-default" style="padding-left: 10px;">
+            <button type="submit" class="btn btn-primary navbar-btn" ng-click="salvar()">
+                <i class="fa fa-save"></i>
+                Salvar
+            </button>
+            <button class="btn btn-warning navbar-btn" ng-click="limpar()">
+                <i class="fa fa-eraser"></i>
+                Limpar
+            </button>
+            <button class="btn btn-danger" ng-click="excluir()">
+                <i class="fa fa-trash"></i>
+                Excluir
+            </button>
+        </nav>
+    </form>
+</div>
+</body>
+</html>
